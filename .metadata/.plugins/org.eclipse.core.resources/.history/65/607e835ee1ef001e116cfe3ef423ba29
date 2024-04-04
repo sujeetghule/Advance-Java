@@ -1,0 +1,273 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class ContactJDBC {
+
+	private static Driver driver;
+	private static Connection connection;
+	private static PreparedStatement preparedStatement;
+	private static ResultSet resultSet;
+	private static String query;
+
+	public static void addContact(int id, String firstName, String lastName, String email, Long mobileNo,
+			String category) {
+
+		try {
+			openConnection();
+
+			query = "INSERT INTO contact VALUES (?,?,?,?,?,?)";
+
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, firstName);
+			preparedStatement.setString(3, lastName);
+			preparedStatement.setString(4, email);
+			preparedStatement.setLong(5, mobileNo);
+			preparedStatement.setString(6, category);
+
+			preparedStatement.executeUpdate();
+
+//			System.out.println(res);
+//
+//			if (res == 1) {
+//				System.out.println("Data Inserted");
+//			} else {
+//				System.out.println("Error in data Inserted");
+//			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				closeConnection();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+
+	}
+	
+	public static void viewAllJDBC() {
+		
+		try {
+			openConnection();
+			query = "SELECT * FROM contact";
+			
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1)+"\t");
+				System.out.print(resultSet.getString(2)+"\t");
+				System.out.print(resultSet.getString(3)+" \t");
+				System.out.print(resultSet.getString(4)+"\t");
+				System.out.print(resultSet.getLong(5)+"\t");
+				System.out.print(resultSet.getString(6)+"\t\n");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				closeConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void editContact(Scanner scanner) {
+		// TODO Auto-generated method stub
+		try {
+			ContactJDBC.viewAllJDBC();
+
+			openConnection();
+			
+
+			System.out.println("Enter the Id Which You want to edit");
+			int editId = scanner.nextInt();
+			
+			query="UPDATE contact SET id = ? ,firstName=?, lastName = ?, email=?, mobileNo=? , category=? where id ="+editId;
+			 
+			preparedStatement = connection.prepareStatement(query);
+
+			
+
+			
+			System.out.println("Enter Id");
+			int id = scanner.nextInt();
+			scanner.nextLine();
+			System.out.println("Enter firat Name");
+			String firstName = scanner.nextLine();
+			System.out.println("Enter Last Name");
+			String lastName = scanner.nextLine();
+			System.out.println("Enter Email");
+			String email = scanner.nextLine();
+			System.out.println("Enter Moile No");
+			long mobileNo = scanner.nextLong();
+			scanner.nextLine();
+			System.out.println("Enter Categoey\n" + "\t1. Family\n" + "\t2. Friend\n" + "\t3. Work");
+			int cat = scanner.nextInt();
+			String category = "";
+			switch (cat) {
+				case 1:
+					category = "Family";
+					break;
+				case 2:
+					category = "Friend";
+					break;
+				case 3:
+					category = "Work";
+					break;
+	
+				default:
+					break;
+				}
+
+			
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, firstName);
+
+			preparedStatement.setString(3, lastName);
+			preparedStatement.setString(4, email);
+			preparedStatement.setLong(5, mobileNo);
+			preparedStatement.setString(6, category);
+
+			int res = preparedStatement.executeUpdate();
+
+			System.out.println(res+" Row(s) affected");
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+
+			
+		}finally {
+			try {
+				closeConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
+	
+	
+	
+public static void deleteContactJDBC() {
+	try {
+		
+		viewAllJDBC();
+
+		openConnection();
+		
+		int inputID = 2;
+
+		
+			System.out.println("Enter the id Which You want to DELETED");
+		
+
+		query = "DELETE FROM contact WHERE id ="+inputID;
+		
+		Statement statement= connection.createStatement();
+		
+
+		int res  = statement.executeUpdate(query);
+		
+
+		if (res>0) {
+			System.out.println(res + "row(s) affected");
+		}
+		else {
+			System.out.println("Id Not Found");
+			
+		}
+
+		
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	finally {
+		try {
+			closeConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	private static void openConnection() throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		driver = new com.mysql.cj.jdbc.Driver();
+		DriverManager.registerDriver(driver);
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/weje1", "root", "root");
+	}
+
+	private static void closeConnection() throws SQLException {
+		if (resultSet != null) {
+			resultSet.close();
+		}
+		if (preparedStatement != null) {
+			preparedStatement.close();
+		}
+		if (connection != null) {
+			connection.close();
+		}
+		if (driver != null) {
+			DriverManager.deregisterDriver(driver);
+		}
+	}
+
+	
+
+	
+
+}

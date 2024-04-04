@@ -1,0 +1,5 @@
+package com.jspider.hibernate2.dto;
+
+public class StudentMain {
+
+}

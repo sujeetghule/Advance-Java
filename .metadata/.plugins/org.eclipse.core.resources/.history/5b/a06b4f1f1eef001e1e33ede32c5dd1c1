@@ -1,0 +1,67 @@
+package com.jspider.demo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mysql.cj.jdbc.Driver;
+
+public class jdbcBasic {
+
+	public static Driver driver;
+	public static Connection connection;
+	public static Statement statement;
+	public static String query;
+	public static String url = "jdbc:mysql://localhost:3306/weje1?user=root&&password=root";
+
+	public static void main(String[] args) {
+
+		try {
+			openConnection();
+			query = "Inset into user values (?,?,?,?,?)";
+			Statement statement = connection.createStatement();
+			statement.execute(query);
+			
+			
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				closeConnection();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+
+	}
+
+	public static void openConnection() {
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Driver driver = new Driver();
+			DriverManager.registerDriver(driver);
+
+			Connection connection = DriverManager.getConnection(url);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	public static void closeConnection() {
+		try {
+			statement.close();
+			connection.close();
+			DriverManager.deregisterDriver(driver);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

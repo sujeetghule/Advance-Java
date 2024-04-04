@@ -1,0 +1,39 @@
+package com.jspiders.multithreading.resoures;
+
+public class Product {
+	public boolean Avaliable;
+	public synchronized void Order() {
+		System.out.println("Order is recived");
+		if(Avaliable) {
+			System.out.println("Product Is deliverd");
+			
+		}
+		else {
+			System.out.println("Product is unavaliable");
+			System.out.println("Wait for some time");
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (Avaliable) {
+				System.out.println("Product id Deliverd");
+			}
+		}
+	}
+	
+	public synchronized void manufature() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Product id under manufature");
+		System.out.println("Product is ready");
+		Avaliable = true;
+		notify();
+		
+	}
+}
