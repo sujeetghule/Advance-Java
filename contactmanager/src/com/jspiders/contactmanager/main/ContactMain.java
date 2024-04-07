@@ -14,9 +14,7 @@ public class ContactMain {
 		System.out.println("Welcome To Conatct Manager");
 		while (loop) {
 			App();
-		}
-		
-		
+		}		
 	}
 
 	private static void App() {

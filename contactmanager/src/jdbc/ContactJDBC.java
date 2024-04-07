@@ -74,7 +74,9 @@ public class ContactJDBC {
 				System.out.print(resultSet.getLong(5) + "\t");
 				System.out.print(resultSet.getString(6) + "\t\n");
 			}
-
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Avaliable");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,7 +100,7 @@ public class ContactJDBC {
 			System.out.println("Enter the Id Which You want to edit");
 			int editId = scanner.nextInt();
 
-			query = "UPDATE contact SET id = ? ,firstName=?, lastName = ?, email=?, mobileNo=? , category=? where id ="
+			query = "UPDATE contact SET id = ? ,firstName=?, lastName = ?, email=?, mobile=? , category=? where id ="
 					+ editId;
 
 			preparedStatement = connection.prepareStatement(query);
@@ -242,6 +244,29 @@ public class ContactJDBC {
 		// TODO Auto-generated method stub
 		try {
 			openConnection();
+			System.out.println("Enter The Mobile Number to searach ");
+			long mo = scanner.nextLong();
+
+			query = "SELECT * FROM contact WHERE mobile = ? ";
+
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setLong(1, mo);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1) + "\t");
+				System.out.print(resultSet.getString(2) + "\t");
+				System.out.print(resultSet.getString(3) + " \t");
+				System.out.print(resultSet.getString(4) + "\t");
+				System.out.print(resultSet.getLong(5) + "\t");
+				System.out.print(resultSet.getString(6) + "\t\n");
+			}
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Found");
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -258,6 +283,28 @@ public class ContactJDBC {
 		// TODO Auto-generated method stub
 		try {
 			openConnection();
+			System.out.println("Enter The Last Name ");
+			String firstname = scanner.nextLine();
+
+			query = "SELECT * FROM contact WHERE lastName = ? ";
+
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, firstname);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1) + "\t");
+				System.out.print(resultSet.getString(2) + "\t");
+				System.out.print(resultSet.getString(3) + " \t");
+				System.out.print(resultSet.getString(4) + "\t");
+				System.out.print(resultSet.getLong(5) + "\t");
+				System.out.print(resultSet.getString(6) + "\t\n");
+			}
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Found");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -276,25 +323,27 @@ public class ContactJDBC {
 			openConnection();
 			System.out.println("Enter The First Name ");
 			String firstname = scanner.nextLine();
-			
-			query = "SELECT * FROM contact WHERE firstName in '?' ";
+
+			query = "SELECT * FROM contact WHERE firstName = ? ";
 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, firstname);
-			
-			 ResultSet resultSet  =  preparedStatement.executeQuery();
-			 
-			
-				 while (resultSet.next()) {
-						System.out.print("Contact : ");
-						System.out.print(resultSet.getInt(1) + "\t");
-						System.out.print(resultSet.getString(2) + "\t");
-						System.out.print(resultSet.getString(3) + " \t");
-						System.out.print(resultSet.getString(4) + "\t");
-						System.out.print(resultSet.getLong(5) + "\t");
-						System.out.print(resultSet.getString(6) + "\t\n");
-					}
-		
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1) + "\t");
+				System.out.print(resultSet.getString(2) + "\t");
+				System.out.print(resultSet.getString(3) + " \t");
+				System.out.print(resultSet.getString(4) + "\t");
+				System.out.print(resultSet.getLong(5) + "\t");
+				System.out.print(resultSet.getString(6) + "\t\n");
+			}
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Found");
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -321,20 +370,22 @@ public class ContactJDBC {
 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, inputID);
-			
-			 ResultSet resultSet  =  preparedStatement.executeQuery();
-			 
-			
-				 while (resultSet.next()) {
-						System.out.print("Contact : ");
-						System.out.print(resultSet.getInt(1) + "\t");
-						System.out.print(resultSet.getString(2) + "\t");
-						System.out.print(resultSet.getString(3) + " \t");
-						System.out.print(resultSet.getString(4) + "\t");
-						System.out.print(resultSet.getLong(5) + "\t");
-						System.out.print(resultSet.getString(6) + "\t\n");
-					}
-		
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1) + "\t");
+				System.out.print(resultSet.getString(2) + "\t");
+				System.out.print(resultSet.getString(3) + " \t");
+				System.out.print(resultSet.getString(4) + "\t");
+				System.out.print(resultSet.getLong(5) + "\t");
+				System.out.print(resultSet.getString(6) + "\t\n");
+			}
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Found");
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -357,43 +408,39 @@ public class ContactJDBC {
 			int value = scanner.nextInt();
 			switch (value) {
 			case 1:
-				 cat = "Family";
+				cat = "Family";
 				break;
 			case 2:
-				 cat = "Friend";
+				cat = "Friend";
 				break;
 			case 3:
-				 cat = "Work";
+				cat = "Work";
 				break;
-
 
 			default:
 				System.out.println("Worng Input");
 				break;
 			}
 
-			
-
 			query = "SELECT * FROM contact WHERE category IN (?)";
 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, cat);
-			
-			 ResultSet resultSet  =  preparedStatement.executeQuery();
-			 
-			
-				 while (resultSet.next()) {
-						System.out.print("Contact : ");
-						System.out.print(resultSet.getInt(1) + "\t");
-						System.out.print(resultSet.getString(2) + "\t");
-						System.out.print(resultSet.getString(3) + " \t");
-						System.out.print(resultSet.getString(4) + "\t");
-						System.out.print(resultSet.getLong(5) + "\t");
-						System.out.print(resultSet.getString(6) + "\t\n");
-					}
-			
-			
-			 
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				System.out.print("Contact : ");
+				System.out.print(resultSet.getInt(1) + "\t");
+				System.out.print(resultSet.getString(2) + "\t");
+				System.out.print(resultSet.getString(3) + " \t");
+				System.out.print(resultSet.getString(4) + "\t");
+				System.out.print(resultSet.getLong(5) + "\t");
+				System.out.print(resultSet.getString(6) + "\t\n");
+			}
+			if (!resultSet.next()) {
+				System.out.println("Contact Not Found");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

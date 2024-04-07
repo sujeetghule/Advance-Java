@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="com.jspiders.multithreading.resoures.MyResource2"/>
-    <fullyQualifiedTypeName name="com.jspiders.multithreading.threads.MyThread10"/>
-    <fullyQualifiedTypeName name="com.jspiders.multithreading.threads.MyThread11"/>
-    <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Mobile"/>
-    <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Apple"/>
-    <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Samsung"/>
-    <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Redmi"/>
-    <fullyQualifiedTypeName name="javax.security.sasl.RealmCallback"/>
-    <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Realme"/>
     <fullyQualifiedTypeName name="com.jspiders.designpattern.main.AccountMain"/>
     <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.Account"/>
     <fullyQualifiedTypeName name="com.jspiders.designpattern.creations.User"/>
@@ -30,7 +20,6 @@
     <fullyQualifiedTypeName name="com.jspiders.serialization.objects.User"/>
     <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
     <fullyQualifiedTypeName name="java.lang.Class"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.Driver"/>
     <fullyQualifiedTypeName name="java.io.File"/>
@@ -43,21 +32,32 @@
     <fullyQualifiedTypeName name="jdbc.ContactJDBC"/>
     <fullyQualifiedTypeName name="javax.transaction.Transaction"/>
     <fullyQualifiedTypeName name="javax.swing.border.EtchedBorder"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
-    <fullyQualifiedTypeName name="javax.persistence.Id"/>
-    <fullyQualifiedTypeName name="javax.persistence.Column"/>
     <fullyQualifiedTypeName name="com.jspider.hibernate2.dto.StudentMain"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="com.jspider.hibernate2.dao.Student"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="net.bytebuddy.jar.asm.Opcodes"/>
     <fullyQualifiedTypeName name="com.jspiders.hibernate.dao.Contact"/>
-    <fullyQualifiedTypeName name="javax.persistence.Embeddable"/>
-    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="java.lang.invoke.ClassSpecializer.Factory"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
+    <fullyQualifiedTypeName name="com.jspiders.one_to_one_uni.dto.Aadhar"/>
+    <fullyQualifiedTypeName name="com.jspiders.one_to_one_uni.dto.Persone"/>
+    <fullyQualifiedTypeName name="org.hibernate.internal.build.AllowSysOut"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.jspiders.contact_manager_app.main.ContactMain"/>
+    <fullyQualifiedTypeName name="javax.persistence.Embeddable"/>
+    <fullyQualifiedTypeName name="com.jspiders.contact_manager_app.dao.ContactOperations"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javax.persistence.Query"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.jspiders.contact_manager_app.dto.Contact"/>
 </qualifiedTypeNameHistroy>

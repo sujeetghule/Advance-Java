@@ -26,13 +26,15 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.jspider.hibernate2"/>
+			<item value="com.jspiders.contact_manager_app"/>
+			<item value="com.jspiders.one_to_one_uni"/>
 		</list>
 		<list key="groupId">
-			<item value="com.jspider"/>
+			<item value="com.jspiders"/>
 		</list>
 		<list key="artifactId">
-			<item value="hibernate2"/>
+			<item value="contact_manager_app"/>
+			<item value="one_to_one_uni"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
