@@ -15,7 +15,7 @@ import lombok.Data;
 @Table(name = "persone_info")
 public class Persone {
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id ;
 	
 	@Column(nullable = false, unique = false )
@@ -29,5 +29,7 @@ public class Persone {
 	
 	@OneToOne
 	private Aadhar aadhar;
+	
+	
 
 }

@@ -1,5 +1,0 @@
-package com.jspider.hibernate2.dao;
-
-public class Student {
-
-}

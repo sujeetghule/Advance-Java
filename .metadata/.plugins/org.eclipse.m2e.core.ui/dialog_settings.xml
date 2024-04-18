@@ -26,15 +26,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.jspiders.contact_manager_app"/>
-			<item value="com.jspiders.one_to_one_uni"/>
 		</list>
 		<list key="groupId">
-			<item value="com.jspiders"/>
 		</list>
 		<list key="artifactId">
-			<item value="contact_manager_app"/>
-			<item value="one_to_one_uni"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -70,5 +65,7 @@
 	<section name="org.eclipse.m2e.core.pom.overview">
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.wizards.CustomArchetypeDialog">
 	</section>
 </section>
